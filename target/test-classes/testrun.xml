@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- <suite thread-count="1" verbose="1" name="Selion Test"
+	skipfailedinvocationcounts="false" junit="false" parallel="classes"
+	data-provider-thread-count="1" annotations="JDK"> -->
+	<suite name="Page Object test example">
+
+	<!-- optional (defaults to firefox). Firefox browser will be used for web 
+		test -->
+	<parameter name="browserType" value="firefox" />
+	<parameter name="appURL" value="https://www.paypal.com/in/webapps/mpp/home" />
+	
+	<parameter name="runLocally" value="true" /><!-- -->
+
+	<test name="SampleTest">
+		<classes>
+			<class name="com.paypal.demo.CreateNewAccount"></class>
+		</classes>
+	</test>
+</suite>
