@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -11,7 +13,8 @@ import org.testng.annotations.Parameters;
 public class Driver {
 
 	private WebDriver driver;
-	static String driverPath = "D:\\chromedriver\\";
+	private static String chromeDriverPath = "D:\\chromedriver\\";
+	private static String internetExplorerDriverPath = "D:\\ieriver\\";
 	final static Logger logger = Logger.getLogger("Test");
 
 	public WebDriver getDriver() {
@@ -26,6 +29,8 @@ public class Driver {
 		case "firefox":
 			driver = initFirefoxDriver(appURL);
 			break;
+		case "ie":
+			break;
 		default:
 			System.out.println("browser : " + browserType
 					+ " is invalid, Launching Firefox as browser of choice..");
@@ -37,7 +42,7 @@ public class Driver {
 
 	private static WebDriver initChromeDriver(String appURL) {
 		System.out.println("Launching google chrome with new profile..");
-		System.setProperty("webdriver.chrome.driver", driverPath
+		System.setProperty("webdriver.chrome.driver", chromeDriverPath
 				+ "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -53,6 +58,18 @@ public class Driver {
 		return driver;
 	}
 
+	private static WebDriver initInternetExplorerDriver(String appURL) {
+		
+		System.out.println("Launching internet explorer browser..");
+		System.setProperty("webdriver.ie.driver", internetExplorerDriverPath +"IEDriverServer.exe");
+
+		DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+		ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		WebDriver driver = new InternetExplorerDriver(ieCapabilities);
+		driver.manage().window().maximize();
+		driver.navigate().to(appURL);
+		return driver;
+	}
 	@Parameters({ "browserType", "appURL" })
 	@BeforeSuite
 	public void initializeTestBaseSetup(String browserType, String appURL) {
@@ -64,8 +81,8 @@ public class Driver {
 		}
 	}
 	
-	@AfterSuite
-	public void tearDown() {
-		driver.quit();
-	}
+//	@AfterSuite
+//	public void tearDown() {
+//		driver.quit();
+//	}
 }

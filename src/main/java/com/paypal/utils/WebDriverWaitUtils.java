@@ -1,10 +1,19 @@
 package com.paypal.utils;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.common.base.Function;
 
 public class WebDriverWaitUtils {
 
@@ -34,6 +43,68 @@ public class WebDriverWaitUtils {
 				return "element to no longer be visible: " + locator;
 			}
 		};
+	}
+
+	void waitForLoad(WebDriver driver) {
+		ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return ((JavascriptExecutor) driver).executeScript(
+						"return document.readyState").equals("complete");
+			}
+		};
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(pageLoadCondition);
+	}
+
+	private static WebElement findElement(final WebDriver driver,
+			final By locator, final int timeoutSeconds) {
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(timeoutSeconds, TimeUnit.SECONDS)
+				.pollingEvery(500, TimeUnit.MILLISECONDS)
+				.ignoring(NoSuchElementException.class);
+
+		return wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				return driver.findElement(locator);
+			}
+		});
+	}
+
+	private static void isTextPresent(final WebDriver driver, final By locator,
+			final String text) {
+
+		WebElement countdown = driver.findElement(locator);
+		new WebDriverWait(driver, 10).until(ExpectedConditions
+				.visibilityOf(countdown));
+		new FluentWait<WebElement>(countdown).withTimeout(10, TimeUnit.SECONDS)
+				.pollingEvery(100, TimeUnit.MILLISECONDS)
+				.until(new Function<WebElement, Boolean>() {
+					@Override
+					public Boolean apply(WebElement element) {
+						return element.getText().endsWith(text);
+					}
+
+				});
+
+	}
+
+	private boolean isElementPresent(WebDriver driver, By by) {
+		try {
+			driver.findElement(by);
+			return true;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+
+	public static boolean isElementVisible(WebDriver driver, final By by)
+			throws InterruptedException {
+		boolean value = false;
+
+		if (driver.findElements(by).size() > 0) {
+			value = true;
+		}
+		return value;
 	}
 
 }

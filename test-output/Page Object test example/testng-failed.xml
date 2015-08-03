@@ -8,7 +8,6 @@
     <classes>
       <class name="com.paypal.demo.CreateNewAccount">
         <methods>
-          <include name="tearDown"/>
           <include name="initializeTestBaseSetup"/>
           <include name="createNewAccount"/>
           <include name="setUp1"/>
