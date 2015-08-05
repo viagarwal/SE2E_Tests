@@ -1,4 +1,6 @@
-package com.paypal.demo;
+package com.paypal.tests;
+
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -9,6 +11,7 @@ import com.paypal.pages.AccountSetUpPage;
 import com.paypal.pages.HomePage;
 import com.paypal.pages.SignUpPage;
 import com.paypal.utils.Driver;
+import com.paypal.utils.ReadYamlFile;
 
 public class CreateNewAccount extends Driver {
 
@@ -17,6 +20,7 @@ public class CreateNewAccount extends Driver {
 	private SignUpPage signUpPage = null;
 	private AccountInformationPage accountInformationPage = null;
 	private AccountSetUpPage AccountSetUpPage = null;
+	private ReadYamlFile readyamlFile = null;
 	
 	
 	@BeforeClass
@@ -26,16 +30,18 @@ public class CreateNewAccount extends Driver {
 		signUpPage = new SignUpPage(driver);
 		AccountSetUpPage = new AccountSetUpPage(driver);
 		accountInformationPage = new AccountInformationPage(driver);
+		readyamlFile = new  ReadYamlFile();
 		
 	}
 	
 	@Test
-	public void createNewAccount(){
+	public void createNewAccount() throws IOException{
 
 		homePage.clickSignUpButton();
 		signUpPage.selectAccount("United States");
 		AccountSetUpPage.clickOnBusinessRadioButton();
 		AccountSetUpPage.clickOnContinueButton();
+		readyamlFile.getKeyValue("in", "id");
 		
 	}
 }

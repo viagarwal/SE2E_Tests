@@ -8,8 +8,7 @@
 	<!-- optional (defaults to firefox). Firefox browser will be used for web 
 		test -->
 	<parameter name="browserType" value="firefox" />
-	<parameter name="appURL" value="https://www.paypal.com/in/webapps/mpp/home" />
-	
+	<parameter name="appURL" value="https://www.paypal.com/in/webapps/mpp/home" /> 
 	<parameter name="runLocally" value="true" /><!-- -->
 
 	<test name="SampleTest">

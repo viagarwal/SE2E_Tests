@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,7 +37,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Page_Object_test_example">
-              <span class="suite-name border-failed">Page Object test example</span>
+              <span class="suite-name border-passed">Page Object test example</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Page_Object_test_example">
-                    <span>C:\WorkSpace\SE2E_Tests\src\test\java\testrun.xml</span>
+                    <span>C:\Users\nim\AppData\Local\Temp\testng-eclipse--1725319000\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -90,21 +90,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Page_Object_test_example" class="hide-methods failed suite-Page_Object_test_example"> (hide)</a> <!-- hide-methods failed suite-Page_Object_test_example -->
-                      <a href="#" panel-name="suite-Page_Object_test_example" class="show-methods failed suite-Page_Object_test_example"> (show)</a> <!-- show-methods failed suite-Page_Object_test_example -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Page_Object_test_example" class="hide-methods passed suite-Page_Object_test_example"> (hide)</a> <!-- hide-methods passed suite-Page_Object_test_example -->
+                      <a href="#" panel-name="suite-Page_Object_test_example" class="show-methods passed suite-Page_Object_test_example"> (show)</a> <!-- show-methods passed suite-Page_Object_test_example -->
                     </span>
-                    <div class="method-list-content failed suite-Page_Object_test_example">
+                    <div class="method-list-content passed suite-Page_Object_test_example">
                       <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Page_Object_test_example" title="com.paypal.demo.CreateNewAccount" hash-for-method="createNewAccount">createNewAccount</a> <!-- method navigator-link -->
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Page_Object_test_example" title="com.paypal.tests.CreateNewAccount" hash-for-method="createNewAccount">createNewAccount</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Page_Object_test_example -->
+                    </div> <!-- method-list-content passed suite-Page_Object_test_example -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,10 +116,10 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Page_Object_test_example" class="panel Page_Object_test_example">
-          <div class="suite-Page_Object_test_example-class-failed">
+          <div class="suite-Page_Object_test_example-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">com.paypal.demo.CreateNewAccount</span>
+              <img src="passed.png"/>
+              <span class="class-name">com.paypal.tests.CreateNewAccount</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -127,47 +127,14 @@
                   <a name="createNewAccount">
                   </a> <!-- createNewAccount -->
                   <span class="method-name">createNewAccount</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;signup-button&quot;}
-Command duration or timeout: 632.57 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
-System info: host: &apos;badanekai&apos;, ip: &apos;192.168.146.1&apos;, os.name: &apos;Windows 8&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.2&apos;, java.version: &apos;1.7.0_25&apos;
-*** Element info: {Using=id, value=signup-button}
-Session ID: ad6a2e70-0136-4c50-84f0-fc3cce396017
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=39.0}]
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:348)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:389)
-	at org.openqa.selenium.By$ById.findElement(By.java:215)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:340)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy9.click(Unknown Source)
-	at com.paypal.pages.HomePage.clickSignUpButton(HomePage.java:29)
-	at com.paypal.demo.CreateNewAccount.createNewAccount(CreateNewAccount.java:35)
-Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;signup-button&quot;}
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
-System info: host: &apos;badanekai&apos;, ip: &apos;192.168.146.1&apos;, os.name: &apos;Windows 8&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.2&apos;, java.version: &apos;1.7.0_25&apos;
-Driver info: driver.version: unknown
-	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/nim/AppData/Local/Temp/anonymous1728100465825299534webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10667)
-	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/nim/AppData/Local/Temp/anonymous1728100465825299534webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10676)
-	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/nim/AppData/Local/Temp/anonymous1728100465825299534webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12643)
-	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/nim/AppData/Local/Temp/anonymous1728100465825299534webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12648)
-	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/nim/AppData/Local/Temp/anonymous1728100465825299534webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12590)
-... Removed 28 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Page_Object_test_example-class-failed -->
+          </div> <!-- suite-Page_Object_test_example-class-passed -->
         </div> <!-- panel Page_Object_test_example -->
         <div panel-name="test-xml-Page_Object_test_example" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\WorkSpace\SE2E_Tests\src\test\java\testrun.xml</span>
+            <span class="header-content">C:\Users\nim\AppData\Local\Temp\testng-eclipse--1725319000\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -175,13 +142,13 @@ Driver info: driver.version: unknown
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Page Object test example&quot;&gt;
   &lt;parameter name=&quot;runLocally&quot; value=&quot;true&quot;/&gt;
-  &lt;parameter name=&quot;appURL&quot; value=&quot;https://www.paypal.com/in/webapps/mpp/home&quot;/&gt;
   &lt;parameter name=&quot;browserType&quot; value=&quot;firefox&quot;/&gt;
-  &lt;test name=&quot;SampleTest&quot;&gt;
+  &lt;parameter name=&quot;appURL&quot; value=&quot;https://www.paypal.com/in/webapps/mpp/home&quot;/&gt;
+  &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.paypal.demo.CreateNewAccount&quot;/&gt;
+      &lt;class name=&quot;com.paypal.tests.CreateNewAccount&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- SampleTest --&gt;
+  &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Page Object test example --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -193,7 +160,7 @@ Driver info: driver.version: unknown
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">SampleTest (1 class)</span>
+                <span class="test-name">Default test (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -222,13 +189,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'createNewAccount')
-data.setCell(0, 2, 'com.paypal.demo.CreateNewAccount')
-data.setCell(0, 3, 632604);
+data.setCell(0, 2, 'com.paypal.tests.CreateNewAccount')
+data.setCell(0, 3, 151);
 window.suiteTableData['Page_Object_test_example']= { tableData: data, tableDiv: 'times-div-Page_Object_test_example'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 minutes</span>
+              <span class="suite-total-time">Total running time: 151 ms</span>
               <div id="times-div-Page_Object_test_example">
               </div> <!-- times-div-Page_Object_test_example -->
             </div> <!-- times-div -->
@@ -254,20 +221,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.paypal.demo.CreateNewAccount</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.paypal.tests.CreateNewAccount</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">initializeTestBaseSetup(firefox, https://www.paypal.com/in/webapps/mpp/home)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">setUp1</span>
-                <span class="method-start">256218 ms</span>
+                <span class="method-start">24735 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">createNewAccount</span>
-                <span class="method-start">256264 ms</span>
+                <span class="method-start">24815 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
