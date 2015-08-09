@@ -1,0 +1,5 @@
+locale : IN
+amount : 10
+---
+locale : US
+amount : 20

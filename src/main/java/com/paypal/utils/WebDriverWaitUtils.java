@@ -106,5 +106,10 @@ public class WebDriverWaitUtils {
 		}
 		return value;
 	}
+	
+	public static void waitElementIsVisible(WebDriver driver , WebElement elm){
+		WebDriverWait wait  = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(elm));
+	}
 
 }

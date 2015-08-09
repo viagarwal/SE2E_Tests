@@ -4,30 +4,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
-import com.paypal.utils.Library;
+import com.paypal.utils.WebDriverWaitUtils;
 
 public class SignUpPage {
 
+	@FindBy(id = "country") private WebElement selectCountry;	
+	
 	private WebDriver driver;
-	private Library lib = null;
-	WebDriverWait wait = null;
-
+	
 	public SignUpPage(WebDriver driver) {
 		this.driver = driver;
-		lib = new Library();
-		wait = new WebDriverWait(driver, 20);
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(id = "country")
-	private WebElement selectCountry;
-
 	public String getPageTitle() {
-		String title = driver.getTitle();
-		return title;
+		return driver.getTitle();
 	}
 
 	public boolean verifyPageTitle() {
@@ -36,8 +29,8 @@ public class SignUpPage {
 	}
 
 	public AccountSetUpPage selectAccount(String country) {
-		wait.until(ExpectedConditions.visibilityOf(selectCountry));
-		lib.selectVisibleText(selectCountry, country);
+		WebDriverWaitUtils.waitElementIsVisible(driver , selectCountry);
+		new Select(selectCountry).selectByVisibleText(country);
 		return new AccountSetUpPage(driver);
 	}
 }

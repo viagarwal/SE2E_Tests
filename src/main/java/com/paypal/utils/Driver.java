@@ -6,22 +6,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.WebDriverEventListener;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 public class Driver implements WebDriverEventListener  {
 
-	private WebDriver driver;
+	public WebDriver driver;
 	private static String chromeDriverPath = "D:\\chromedriver\\";
 	private static String internetExplorerDriverPath = "D:\\ieriver\\";
 	final static Logger logger = Logger.getLogger("Test");
 
 	public WebDriver getDriver() {
 		return driver;
+		
 	}
 
 	private void setDriver(String browserType, String appURL) {
@@ -33,6 +34,7 @@ public class Driver implements WebDriverEventListener  {
 			driver = initFirefoxDriver(appURL);
 			break;
 		case "ie":
+			driver = initInternetExplorerDriver(appURL);
 			break;
 		default:
 			System.out.println("browser : " + browserType
@@ -55,7 +57,9 @@ public class Driver implements WebDriverEventListener  {
 
 	private static WebDriver initFirefoxDriver(String appURL) {
 		System.out.println("Launching Firefox browser..");
-		WebDriver driver = new FirefoxDriver();
+//		File file = new File("firebug-1.8.1.xpi");
+		FirefoxProfile firefoxProfile = new FirefoxProfile();
+		WebDriver driver = new FirefoxDriver(firefoxProfile);
 		driver.manage().window().maximize();
 		driver.navigate().to(appURL);
 		return driver;
@@ -73,6 +77,8 @@ public class Driver implements WebDriverEventListener  {
 		driver.navigate().to(appURL);
 		return driver;
 	}
+	
+	
 	@Parameters({ "browserType", "appURL" })
 	@BeforeSuite
 	public void initializeTestBaseSetup(String browserType, String appURL) {

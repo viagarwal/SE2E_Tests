@@ -1,18 +1,44 @@
 package com.paypal.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
+
+import com.paypal.utils.WebDriverWaitUtils;
+import com.paypal.utils.YamlReader;
 
 public class AccountInformationPage {
 
+	private String locale = null;
 	private WebDriver driver;
-	WebDriverWait  wait  = null;
+	@FindBy(id= "business_type") public WebElement  businessType;
+	@FindBy(id ="business_name") public WebElement bussinessName;
+	@FindBy(id ="business_address1") public WebElement businessAddress;
+	@FindBy(id="business_city") public WebElement businessCity;
+	@FindBy(id ="business_state") public WebElement businessState;
+	@FindBy(id ="business_zip") public WebElement businessZip;
+	@FindBy(id ="ccode") public WebElement currencyCode;
+	@FindBy(id ="industry") public WebElement category;
+	@FindBy(id ="date_of_registration_dd") public WebElement dayOfRegistration;
+	@FindBy(id="date_of_registration_mm") public WebElement monthOfRegistration;
+	@FindBy(id ="date_of_registration_yyyy") public WebElement yearOfRegistration;
+	@FindBy(id ="first_name") public WebElement firstName;
+	@FindBy(id="last_name") public WebElement lastName;
+	
+	
 	public AccountInformationPage(WebDriver driver) {
-		this.driver=driver;
-		wait = new WebDriverWait(driver, 20);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	public AccountInformationPage(String locale){
+		this.locale  = locale;
+	}
+	
 	public String getPageTitle() {
 		String title = driver.getTitle();
 		return title;
@@ -21,5 +47,10 @@ public class AccountInformationPage {
 	public boolean verifyPageTitle() {
 		String pageTitle = " Business Account Sign Up – PayPal";
 		return getPageTitle().contains(pageTitle);
+	}
+	
+	public void fillAccountInfo(String locale) throws IOException{
+		WebDriverWaitUtils.waitElementIsVisible(driver , businessType);
+		new Select(businessType).selectByVisibleText(YamlReader.getKeyValue(locale).get("Business Type").toString());
 	}
 }

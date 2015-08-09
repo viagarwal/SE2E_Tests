@@ -2,17 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Page Object test example]">
   <parameter name="runLocally" value="true"/>
-  <parameter name="browserType" value="firefox"/>
   <parameter name="appURL" value="https://www.paypal.com/in/webapps/mpp/home"/>
-  <test name="SampleTest(failed)">
+  <parameter name="browserType" value="firefox"/>
+  <test name="Default test(failed)">
     <classes>
-      <class name="com.paypal.demo.CreateNewAccount">
+      <class name="com.paypal.tests.CreateNewAccount">
         <methods>
           <include name="initializeTestBaseSetup"/>
-          <include name="createNewAccount"/>
           <include name="setUp1"/>
+          <include name="createNewAccount"/>
         </methods>
-      </class> <!-- com.paypal.demo.CreateNewAccount -->
+      </class> <!-- com.paypal.tests.CreateNewAccount -->
     </classes>
-  </test> <!-- SampleTest(failed) -->
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Page Object test example] -->

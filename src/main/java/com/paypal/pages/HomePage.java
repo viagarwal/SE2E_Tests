@@ -7,14 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage  {
 	
+	@FindBy(id = "signup-button") private WebElement signUpButton; 
+	
 	private WebDriver driver;
-		
 	public HomePage(WebDriver driver) {
-		this.driver = driver;
+		this.driver =  driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id = "signup-button") private WebElement signUpButton; 
 	public String getPageTitle() {
 		String title = driver.getTitle();
 		return title;
@@ -25,9 +25,9 @@ public class HomePage  {
 		return getPageTitle().contains(pageTitle);
 	}
 	
-	public SignUpPage clickSignUpButton() {
+	public AccountSetUpPage clickSignUpButton() {
 		signUpButton.click();
-		return new SignUpPage(driver);
+		return new AccountSetUpPage(driver);
 	}
 
 }
