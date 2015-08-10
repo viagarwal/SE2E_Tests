@@ -1,17 +1,16 @@
 package com.paypal.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage  {
+import com.paypal.utils.Driver;
+
+public class HomePage extends Driver {
 	
 	@FindBy(id = "signup-button") private WebElement signUpButton; 
 	
-	private WebDriver driver;
-	public HomePage(WebDriver driver) {
-		this.driver =  driver;
+	public HomePage() {
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -27,7 +26,7 @@ public class HomePage  {
 	
 	public AccountSetUpPage clickSignUpButton() {
 		signUpButton.click();
-		return new AccountSetUpPage(driver);
+		return new AccountSetUpPage();
 	}
 
 }

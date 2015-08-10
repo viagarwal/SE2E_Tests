@@ -2,7 +2,6 @@ package com.paypal.tests;
 
 import java.io.IOException;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
@@ -18,7 +17,6 @@ import com.paypal.utils.YamlReader;
 
 public class CreateNewAccount extends Driver {
 
-	private WebDriver driver = null;
 	private String locale = null;
 	private HomePage homePage = null;
 	private SignUpPage signUpPage = null;
@@ -29,12 +27,10 @@ public class CreateNewAccount extends Driver {
 	
 	@BeforeClass
 	public void setUp1() {
-		driver = getDriver();
-		System.out.println("driver======"+driver);
-		homePage = new HomePage(driver);
-		signUpPage = new SignUpPage(driver);
-		AccountSetUpPage = new AccountSetUpPage(driver);
-		accountInformationPage = new AccountInformationPage(driver);
+		homePage = new HomePage();
+		signUpPage = new SignUpPage();
+		AccountSetUpPage = new AccountSetUpPage();
+		accountInformationPage = new AccountInformationPage();
 		readyamlFile = new  YamlReader();
 		
 	}
@@ -45,10 +41,7 @@ public class CreateNewAccount extends Driver {
 	
 	@Test
 	public void createNewAccount() throws IOException{
-		System.out.println("driver1======"+driver);
-		System.out.println("locale1======"+locale);
 		homePage.clickSignUpButton();
-//		signUpPage.selectAccount("United States");
 		AccountSetUpPage.clickOnBusinessRadioButton();
 		AccountSetUpPage.clickOnContinueButton();
 		accountInformationPage.fillAccountInfo(locale);

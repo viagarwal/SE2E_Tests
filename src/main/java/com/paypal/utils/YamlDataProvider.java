@@ -15,13 +15,12 @@ public class YamlDataProvider {
 	@DataProvider(parallel = true)
 	public static Object[][] geteDataProviderData(ITestNGMethod methodName, ITestContext testContext) throws FileNotFoundException {
 
-		String testName = methodName.getRealClass().getCanonicalName().replaceAll("com.paypal.objects.", "").replaceAll("\\.", "/");
-		System.out.println(methodName.getRealClass().getCanonicalName());
-//		String localesInputDataFile =  + testName + ".yaml";
+		String testName = methodName.getRealClass().getCanonicalName().replaceAll("\\.", "/");
+		String localesInputDataFile = "testdata/"+testName+".yaml";
 		ArrayList<YamlDataReader> dataObjects = new ArrayList<YamlDataReader>();
 
 		Yaml yaml = new Yaml();
-		Iterable<Object> allObjects = yaml.loadAll(ClassLoader.getSystemResourceAsStream("com/paypal/objects/CreateNewAccount.yaml"));
+		Iterable<Object> allObjects = yaml.loadAll(ClassLoader.getSystemResourceAsStream(localesInputDataFile));
 		ArrayList<Object> dataObjectsOfYaml = new ArrayList<Object>();
 
 		for (Object data : allObjects) {

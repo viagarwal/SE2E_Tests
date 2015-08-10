@@ -6,16 +6,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.paypal.utils.Driver;
 import com.paypal.utils.WebDriverWaitUtils;
 
-public class SignUpPage {
+public class SignUpPage extends Driver {
 
 	@FindBy(id = "country") private WebElement selectCountry;	
 	
 	private WebDriver driver;
 	
-	public SignUpPage(WebDriver driver) {
-		this.driver = driver;
+	public SignUpPage() {
 		PageFactory.initElements(driver, this);
 	}
 
@@ -31,6 +31,6 @@ public class SignUpPage {
 	public AccountSetUpPage selectAccount(String country) {
 		WebDriverWaitUtils.waitElementIsVisible(driver , selectCountry);
 		new Select(selectCountry).selectByVisibleText(country);
-		return new AccountSetUpPage(driver);
+		return new AccountSetUpPage();
 	}
 }

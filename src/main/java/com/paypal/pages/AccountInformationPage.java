@@ -2,19 +2,18 @@ package com.paypal.pages;
 
 import java.io.IOException;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.paypal.utils.Driver;
 import com.paypal.utils.WebDriverWaitUtils;
 import com.paypal.utils.YamlReader;
 
-public class AccountInformationPage {
+public class AccountInformationPage extends Driver {
 
 	private String locale = null;
-	private WebDriver driver;
 	@FindBy(id= "business_type") public WebElement  businessType;
 	@FindBy(id ="business_name") public WebElement bussinessName;
 	@FindBy(id ="business_address1") public WebElement businessAddress;
@@ -30,8 +29,7 @@ public class AccountInformationPage {
 	@FindBy(id="last_name") public WebElement lastName;
 	
 	
-	public AccountInformationPage(WebDriver driver) {
-		this.driver = driver;
+	public AccountInformationPage() {
 		PageFactory.initElements(driver, this);
 	}
 	
