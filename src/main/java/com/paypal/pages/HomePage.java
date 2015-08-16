@@ -11,11 +11,11 @@ public class HomePage extends Driver {
 	@FindBy(id = "signup-button") private WebElement signUpButton; 
 	
 	public HomePage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(eventFiringWebDriver, this);
 	}
 	
 	public String getPageTitle() {
-		String title = driver.getTitle();
+		String title = eventFiringWebDriver.getTitle();
 		return title;
 	}
 	

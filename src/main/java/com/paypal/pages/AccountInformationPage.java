@@ -30,7 +30,7 @@ public class AccountInformationPage extends Driver {
 	
 	
 	public AccountInformationPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(eventFiringWebDriver, this);
 	}
 	
 	public AccountInformationPage(String locale){
@@ -38,7 +38,7 @@ public class AccountInformationPage extends Driver {
 	}
 	
 	public String getPageTitle() {
-		String title = driver.getTitle();
+		String title = eventFiringWebDriver.getTitle();
 		return title;
 	}
 	
@@ -48,7 +48,7 @@ public class AccountInformationPage extends Driver {
 	}
 	
 	public void fillAccountInfo(String locale) throws IOException{
-		WebDriverWaitUtils.waitElementIsVisible(driver , businessType);
+		WebDriverWaitUtils.waitElementIsVisible(eventFiringWebDriver , businessType);
 		new Select(businessType).selectByVisibleText(YamlReader.getKeyValue(locale).get("Business Type").toString());
 	}
 }

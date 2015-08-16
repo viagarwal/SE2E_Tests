@@ -1,6 +1,14 @@
 package com.paypal.utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,17 +17,25 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+
+@Listeners({ com.paypal.utils.WebDriverListener.class})
 public class Driver {
 
 	public static WebDriver driver;
-	public WebDriverListener eventListener;
+	public static EventFiringWebDriver eventFiringWebDriver ;
 	private static String chromeDriverPath = "D:\\chromedriver\\";
-	private static String internetExplorerDriverPath = "D:\\ieriver\\";
+	private static String internetExplorerDriverPath = "D:\\iedriver\\";
 	final static Logger logger = Logger.getLogger("Test");
+	public static ExtentReports extent  = null;
+	public static ExtentTest test = null;
+	public static String description = null;
 
-	private void setDriver(String browserType, String appURL) {
+	private void setDriver(String browserType, String appURL) throws UnknownHostException {
 		switch (browserType) {
 		case "chrome":
 			driver = initChromeDriver(appURL);
@@ -37,9 +53,17 @@ public class Driver {
 					+ " is invalid, Launching Firefox as browser of choice..");
 			driver = initFirefoxDriver(appURL);
 		}
-		EventFiringWebDriver efwd = new EventFiringWebDriver(driver);
-		eventListener = new WebDriverListener(driver);
-		efwd.register(eventListener);
+		eventFiringWebDriver = new EventFiringWebDriver(driver);
+		eventFiringWebDriver.register(new WebDriverListener());
+		extent =  new ExtentReports(System.getProperty("user.dir")+"\\ExtentReport.html", true);
+		extent.config().documentTitle("Automation Report").reportName("Regression").reportHeadline("");
+		extent.addSystemInfo("Selenium Version", "2.46");
+		extent.addSystemInfo("Environment", "QA");
+		extent.addSystemInfo("User Name", System.getProperty("user.name"));
+		extent.addSystemInfo("OS", System.getProperty("os.name"));
+		extent.addSystemInfo("Java Version", System.getProperty("java.version"));
+		extent.addSystemInfo("Host Name", InetAddress.getLocalHost().getHostName());
+
 
 	}
 
@@ -82,14 +106,21 @@ public class Driver {
 	public void initializeTestBaseSetup(String browserType, String appURL) {
 		try {
 			setDriver(browserType, appURL);
-
 		} catch (Exception e) {
 			System.out.println("Error....." + e.getStackTrace());
 		}
 	}
 
+	public static String takeScreenShot(String fileName) throws IOException{
+		File scrFile = ((TakesScreenshot)eventFiringWebDriver).getScreenshotAs(OutputType.FILE);
+		// Now you can do whatever you need to do with it, for example copy somewhere
+		FileUtils.copyFile(scrFile, new File("src/test/resources/"+fileName+".png"));
+		return fileName+".png";
+	}
 //	@AfterSuite
 //	public void tearDown() {
 //		driver.quit();
 //	}
+
+
 }

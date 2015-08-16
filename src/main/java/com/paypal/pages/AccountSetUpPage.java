@@ -14,11 +14,11 @@ public class AccountSetUpPage extends Driver {
 	@FindBy(id ="personalSignUpForm") private WebElement ContinueButton;
 	
 	public AccountSetUpPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(eventFiringWebDriver, this);
 		
 	}
 	public String getPageTitle() {
-		String title = driver.getTitle();
+		String title = eventFiringWebDriver.getTitle();
 		return title;
 	}
 	
@@ -28,12 +28,12 @@ public class AccountSetUpPage extends Driver {
 	}
 	
 	public void clickOnBusinessRadioButton(){
-		WebDriverWaitUtils.waitElementIsVisible(driver, busnessRadioButton);
+		WebDriverWaitUtils.waitElementIsVisible(eventFiringWebDriver, busnessRadioButton);
 		busnessRadioButton.click();
 	}
 	
 	public AccountInformationPage clickOnContinueButton() {
-		WebDriverWaitUtils.waitElementIsVisible(driver, ContinueButton);	
+		WebDriverWaitUtils.waitElementIsVisible(eventFiringWebDriver, ContinueButton);	
 		ContinueButton.click();
 		return new AccountInformationPage();
 	}

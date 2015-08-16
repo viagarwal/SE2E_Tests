@@ -1,6 +1,5 @@
 package com.paypal.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,14 +12,13 @@ public class SignUpPage extends Driver {
 
 	@FindBy(id = "country") private WebElement selectCountry;	
 	
-	private WebDriver driver;
 	
 	public SignUpPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(eventFiringWebDriver, this);
 	}
 
 	public String getPageTitle() {
-		return driver.getTitle();
+		return eventFiringWebDriver.getTitle();
 	}
 
 	public boolean verifyPageTitle() {
@@ -29,7 +27,7 @@ public class SignUpPage extends Driver {
 	}
 
 	public AccountSetUpPage selectAccount(String country) {
-		WebDriverWaitUtils.waitElementIsVisible(driver , selectCountry);
+		WebDriverWaitUtils.waitElementIsVisible(eventFiringWebDriver , selectCountry);
 		new Select(selectCountry).selectByVisibleText(country);
 		return new AccountSetUpPage();
 	}
