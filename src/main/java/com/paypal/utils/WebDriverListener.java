@@ -66,13 +66,16 @@ public class WebDriverListener extends Driver implements WebDriverEventListener,
 	@Override
 	public void beforeClickOn(WebElement element, WebDriver driver) {
 		// TODO Auto-generated method stub
-		Log.info("Before Click on" + element);
+		System.out.println(element.toString().split("->")[1]);
+		Log.info("Before Click on" + element.toString().split("->")[1]);
+		test.log(LogStatus.INFO,element.toString().split("->")[1]);
 	}
 
 	@Override
 	public void afterClickOn(WebElement element, WebDriver driver) {
 		// TODO Auto-generated method stub
-		Log.info("After Click on" + element);
+		Log.info("After Click on" + element.toString().split("->")[1]);
+		test.log(LogStatus.INFO,element.toString().split("->")[1]);
 
 	}
 
