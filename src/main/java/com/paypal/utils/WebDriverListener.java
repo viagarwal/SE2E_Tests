@@ -1,6 +1,7 @@
 package com.paypal.utils;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class WebDriverListener extends Driver implements WebDriverEventListener, IResultListener {
 
-	private final static Logger Log = Logger.getLogger(WebDriverListener.class.getName());
+//	private final static Logger Log = Logger.getLogger(WebDriverListener.class.getName());
 
 	@Override
 	public void beforeNavigateTo(String url, WebDriver driver) {
@@ -66,15 +67,14 @@ public class WebDriverListener extends Driver implements WebDriverEventListener,
 	@Override
 	public void beforeClickOn(WebElement element, WebDriver driver) {
 		// TODO Auto-generated method stub
-		System.out.println(element.toString().split("->")[1]);
-		Log.info("Before Click on" + element.toString().split("->")[1]);
+		logger.info("Before Click on" + element.toString().split("->")[1]);
 		test.log(LogStatus.INFO,element.toString().split("->")[1]);
 	}
 
 	@Override
 	public void afterClickOn(WebElement element, WebDriver driver) {
 		// TODO Auto-generated method stub
-		Log.info("After Click on" + element.toString().split("->")[1]);
+		logger.info("After Click on" + element.toString().split("->")[1]);
 		test.log(LogStatus.INFO,element.toString().split("->")[1]);
 
 	}
@@ -126,6 +126,7 @@ public class WebDriverListener extends Driver implements WebDriverEventListener,
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
+//		+"::"+result.getMethod().getInvocationNumbers()
 		test = extent.startTest(result.getTestClass().getName()+ "::"+result.getMethod().getMethodName());
 	}
 
@@ -141,10 +142,15 @@ public class WebDriverListener extends Driver implements WebDriverEventListener,
 	@Override
 	public void onTestFailure(ITestResult result) {
 
-		test.log(LogStatus.FAIL, result.getMethod().getDescription());
+		test.log(LogStatus.FAIL, result.getMethod().getDescription(), result.getThrowable().getMessage());
+		try {
+			test.log(LogStatus.INFO, "Screencast below: "+ test.addScreenCapture(takeScreenShot(result.getTestClass().getName()+"_"+result.getMethod().getMethodName())));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		extent.endTest(test);
 		extent.flush();
-//			test.addScreenCapture(takeScreenShot(methodName));
 	}
 
 	@Override

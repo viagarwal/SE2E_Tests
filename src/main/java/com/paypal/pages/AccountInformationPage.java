@@ -47,7 +47,7 @@ public class AccountInformationPage extends Driver {
 		return getPageTitle().contains(pageTitle);
 	}
 	
-	public void fillAccountInfo(String locale) throws IOException{
+	public void fillAccountInfo(String locale) throws IOException {
 		WebDriverWaitUtils.waitElementIsVisible(eventFiringWebDriver , businessType);
 		new Select(businessType).selectByVisibleText(YamlReader.getKeyValue(locale).get("Business Type").toString());
 	}

@@ -30,7 +30,7 @@ public class Driver {
 	public static EventFiringWebDriver eventFiringWebDriver ;
 	private static String chromeDriverPath = "D:\\chromedriver\\";
 	private static String internetExplorerDriverPath = "D:\\iedriver\\";
-	final static Logger logger = Logger.getLogger("Test");
+	final static Logger logger = Logger.getLogger(WebDriverListener.class.getName());
 	public static ExtentReports extent  = null;
 	public static ExtentTest test = null;
 	public static String description = null;
@@ -73,12 +73,12 @@ public class Driver {
                 "th, td, .test-name, .test-desc, .test .right span { color: #fff !important; }" +
                 ".test-body .collapsible > li { border: 1px solid #777; }";
 
-extent.config().insertCustomStyles(css);
+		extent.config().insertCustomStyles(css);
 
 	}
 
 	private static WebDriver initChromeDriver(String appURL) {
-		System.out.println("Launching google chrome with new profile..");
+		logger.info("Launching google chrome with new profile..");
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath
 				+ "chromedriver.exe");
 		driver = new ChromeDriver();
@@ -88,7 +88,7 @@ extent.config().insertCustomStyles(css);
 	}
 
 	private static WebDriver initFirefoxDriver(String appURL) {
-		System.out.println("Launching Firefox browser..");
+		logger.info("Launching Firefox browser..");
 //		File file = new File("firebug-1.8.1.xpi");
 		FirefoxProfile firefoxProfile = new FirefoxProfile();
 		driver = new FirefoxDriver(firefoxProfile);
@@ -99,9 +99,8 @@ extent.config().insertCustomStyles(css);
 
 	private static WebDriver initInternetExplorerDriver(String appURL) {
 		
-		System.out.println("Launching internet explorer browser..");
+		logger.info("Launching internet explorer browser..");
 		System.setProperty("webdriver.ie.driver", internetExplorerDriverPath +"IEDriverServer.exe");
-
 		DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 		ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 		driver = new InternetExplorerDriver(ieCapabilities);
@@ -123,10 +122,10 @@ extent.config().insertCustomStyles(css);
 
 	public static String takeScreenShot(String fileName) throws IOException{
 		File scrFile = ((TakesScreenshot)eventFiringWebDriver).getScreenshotAs(OutputType.FILE);
-		// Now you can do whatever you need to do with it, for example copy somewhere
-		FileUtils.copyFile(scrFile, new File("src/test/resources/"+fileName+".png"));
+		FileUtils.copyFile(scrFile, new File("ScreenShots/"+fileName+".png"));
 		return fileName+".png";
 	}
+	
 //	@AfterSuite
 //	public void tearDown() {
 //		driver.quit();

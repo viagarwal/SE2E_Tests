@@ -13,7 +13,6 @@ import com.paypal.utils.Driver;
 import com.paypal.utils.YamlDataProvider;
 import com.paypal.utils.YamlDataReader;
 
-
 public class CreateNewAccount extends Driver {
 
 	private String locale = null;
@@ -36,28 +35,13 @@ public class CreateNewAccount extends Driver {
 	}
 	
 	@Test(description  ="Create new PayPal Account")
-	public void createNewAccount() throws IOException{
-		
-//		try {
-//			test = extent.startTest(CreateNewAccount.class.getName()+ "::"+locale, "Create new Account");
-//			test.assignCategory("Regression");
-			methodName =  new Object(){}.getClass().getEnclosingMethod().getName();
-			homePage.clickSignUpButton();
-			AccountSetUpPage.clickOnBusinessRadioButton();
-			AccountSetUpPage.clickOnContinueButton();
-			accountInformationPage.fillAccountInfo(locale);
-//			test.log(LogStatus.PASS, "Create New Account");
-
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			test.log(LogStatus.FAIL, "Create New Account: " + test.addScreenCapture(takeScreenShot(methodName)));
-//			e.printStackTrace();
-//		}
-//		finally {
-//			extent.endTest(test);
-//			extent.flush();
-//		}
-		
+	public void getNewAccount() throws IOException  {
+	
+		methodName =  new Object(){}.getClass().getEnclosingMethod().getName();
+		homePage.clickSignUpButton();
+		AccountSetUpPage.clickOnBusinessRadioButton();
+		AccountSetUpPage.clickOnContinueButton();
+		accountInformationPage.fillAccountInfo(locale);
 	}
 
 }
