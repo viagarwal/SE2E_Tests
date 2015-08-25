@@ -10,7 +10,7 @@
         <methods>
           <include name="initializeTestBaseSetup"/>
           <include name="setUp1"/>
-          <include name="createNewAccount"/>
+          <include name="getNewAccount"/>
         </methods>
       </class> <!-- com.paypal.tests.CreateNewAccount -->
     </classes>

@@ -10,6 +10,12 @@ import org.yaml.snakeyaml.Yaml;
 
 public class YamlReader {
 
+	/**
+	 * @param country
+	 * @param key
+	 * @return
+	 * @throws IOException
+	 */
 	@SuppressWarnings({ "unchecked", "resource" })
 	public static Map<String, Object> getKeyValue(String country, String key)
 			throws IOException {
@@ -29,6 +35,11 @@ public class YamlReader {
 
 	}
 
+	/**
+	 * @param country
+	 * @return
+	 * @throws IOException
+	 */
 	@SuppressWarnings({ "unchecked", "resource" })
 	public static Map<String, Object> getKeyValue(String country)
 			throws IOException {

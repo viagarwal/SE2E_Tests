@@ -35,6 +35,11 @@ public class Driver {
 	public static ExtentTest test = null;
 	public static String description = null;
 
+	/**
+	 * @param browserType
+	 * @param appURL
+	 * @throws UnknownHostException
+	 */
 	private void setDriver(String browserType, String appURL) throws UnknownHostException {
 		switch (browserType) {
 		case "chrome":
@@ -47,7 +52,7 @@ public class Driver {
 			driver = initInternetExplorerDriver(appURL);
 			break;
 		default:
-			System.out.println("browser : " + browserType
+			logger.info("browser : " + browserType
 					+ " is invalid, Launching Firefox as browser of choice..");
 			logger.info("browser : " + browserType
 					+ " is invalid, Launching Firefox as browser of choice..");
@@ -77,6 +82,10 @@ public class Driver {
 
 	}
 
+	/**
+	 * @param appURL
+	 * @return
+	 */
 	private static WebDriver initChromeDriver(String appURL) {
 		logger.info("Launching google chrome with new profile..");
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath
@@ -91,12 +100,17 @@ public class Driver {
 		logger.info("Launching Firefox browser..");
 //		File file = new File("firebug-1.8.1.xpi");
 		FirefoxProfile firefoxProfile = new FirefoxProfile();
+		firefoxProfile.setAcceptUntrustedCertificates(true); 
 		driver = new FirefoxDriver(firefoxProfile);
 		driver.manage().window().maximize();
 		driver.navigate().to(appURL);
 		return driver;
 	}
 
+	/**
+	 * @param appURL
+	 * @return
+	 */
 	private static WebDriver initInternetExplorerDriver(String appURL) {
 		
 		logger.info("Launching internet explorer browser..");
@@ -110,16 +124,25 @@ public class Driver {
 	}
 	
 	
+	/**
+	 * @param browserType
+	 * @param appURL
+	 */
 	@Parameters({ "browserType", "appURL" })
 	@BeforeSuite
 	public void initializeTestBaseSetup(String browserType, String appURL) {
 		try {
 			setDriver(browserType, appURL);
 		} catch (Exception e) {
-			System.out.println("Error....." + e.getStackTrace());
+			logger.info("Error....." + e.getStackTrace());
 		}
 	}
 
+	/**
+	 * @param fileName
+	 * @return
+	 * @throws IOException
+	 */
 	public static String takeScreenShot(String fileName) throws IOException{
 		File scrFile = ((TakesScreenshot)eventFiringWebDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(scrFile, new File("ScreenShots/"+fileName+".png"));

@@ -4,3 +4,14 @@
 2015-08-18 00:00:00 INFO  WebDriverListener:77 - After Click on id: signup-button]
 2015-08-18 09:39:06 INFO  WebDriverListener:72 - Before Click on id: signup-button]
 2015-08-18 09:39:06 INFO  WebDriverListener:79 - After Click on id: signup-button]
+2015-08-18 23:54:23 INFO  WebDriverListener:91 - Launching Firefox browser..
+2015-08-18 23:54:59 INFO  WebDriverListener:70 - Before Click on id: signup-button]
+2015-08-18 23:54:59 INFO  WebDriverListener:77 - After Click on id: signup-button]
+2015-08-19 00:22:10 INFO  WebDriverListener:91 - Launching Firefox browser..
+2015-08-19 00:22:56 INFO  WebDriverListener:119 - Error.....[Ljava.lang.StackTraceElement;@6eee1626
+2015-08-19 00:24:06 INFO  WebDriverListener:91 - Launching Firefox browser..
+2015-08-19 00:24:52 INFO  WebDriverListener:119 - Error.....[Ljava.lang.StackTraceElement;@32b7b939
+2015-08-19 00:29:59 INFO  WebDriverListener:91 - Launching Firefox browser..
+2015-08-19 00:30:45 INFO  WebDriverListener:120 - Error.....[Ljava.lang.StackTraceElement;@6eee1626
+2015-08-19 22:12:40 INFO  WebDriverListener:92 - Launching Firefox browser..
+2015-08-19 22:12:43 INFO  WebDriverListener:124 - Error.....[Ljava.lang.StackTraceElement;@1db2e453

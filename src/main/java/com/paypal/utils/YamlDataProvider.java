@@ -11,6 +11,12 @@ import org.yaml.snakeyaml.Yaml;
 
 public class YamlDataProvider {
 
+	/**
+	 * @param methodName
+	 * @param testContext
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	@SuppressWarnings("unchecked")
 	@DataProvider(parallel = true)
 	public static Object[][] geteDataProviderData(ITestNGMethod methodName, ITestContext testContext) throws FileNotFoundException {
@@ -33,18 +39,12 @@ public class YamlDataProvider {
 				  yamlDataReader.setLocale(eachCountryValues.get("locale").toString());
 				  dataObjects.add(yamlDataReader);
 		}
-
 		Object[][] flowData = new Object[dataObjects.size()][1];
 
 		for (int i = 0; i < dataObjects.size(); i++) {
 
 			flowData[i][0] = dataObjects.get(i);
-
 		}
-
 		return flowData;
-
 	}
-
-
 }

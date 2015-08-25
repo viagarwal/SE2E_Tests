@@ -5,13 +5,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.paypal.utils.Driver;
+import com.paypal.utils.WebDriverWaitUtils;
 
-public class HomePage extends Driver {
-	
-	@FindBy(id = "signup-button") private WebElement signUpButton; 
-	@FindBy(css="a#ul-btn") public static WebElement loginButton;
-	
-	public HomePage() {
+public class LoginPage extends Driver {
+
+	@FindBy(css ="a#createAccount") public static WebElement signUpButton;
+	public LoginPage() {
 		PageFactory.initElements(eventFiringWebDriver, this);
 	}
 	
@@ -21,18 +20,13 @@ public class HomePage extends Driver {
 	}
 	
 	public boolean verifyPageTitle() {
-		String pageTitle = "Send Money, Pay Online or Set Up a Merchant Account - PayPal India";
+		String pageTitle = "Log in to your PayPal account";
 		return getPageTitle().contains(pageTitle);
 	}
-	
-	public AccountSetUpPage clickSignUpButton() {
+	public AccountSetUpPage clickOnSignUpButton() {
+		WebDriverWaitUtils.waitElementIsVisible(eventFiringWebDriver, signUpButton);
 		signUpButton.click();
 		return new AccountSetUpPage();
 	}
 	
-	public AccountSetUpPage clickLoginButton() {
-		loginButton.click();
-		return new AccountSetUpPage();
-	}
-
 }

@@ -17,6 +17,10 @@ import com.google.common.base.Function;
 
 public class WebDriverWaitUtils {
 
+	/**
+	 * @param locator
+	 * @return
+	 */
 	public static ExpectedCondition<Boolean> invisibilityOfElementLocated(
 			final WebElement locator) {
 		return new ExpectedCondition<Boolean>() {
@@ -45,6 +49,9 @@ public class WebDriverWaitUtils {
 		};
 	}
 
+	/**
+	 * @param driver
+	 */
 	void waitForLoad(WebDriver driver) {
 		ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
@@ -56,6 +63,12 @@ public class WebDriverWaitUtils {
 		wait.until(pageLoadCondition);
 	}
 
+	/**
+	 * @param driver
+	 * @param locator
+	 * @param timeoutSeconds
+	 * @return
+	 */
 	private static WebElement findElement(final WebDriver driver,
 			final By locator, final int timeoutSeconds) {
 		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
@@ -70,6 +83,11 @@ public class WebDriverWaitUtils {
 		});
 	}
 
+	/**
+	 * @param driver
+	 * @param locator
+	 * @param text
+	 */
 	private static void isTextPresent(final WebDriver driver, final By locator,
 			final String text) {
 
@@ -88,6 +106,11 @@ public class WebDriverWaitUtils {
 
 	}
 
+	/**
+	 * @param driver
+	 * @param by
+	 * @return
+	 */
 	private boolean isElementPresent(WebDriver driver, By by) {
 		try {
 			driver.findElement(by);
@@ -97,6 +120,12 @@ public class WebDriverWaitUtils {
 		}
 	}
 
+	/**
+	 * @param driver
+	 * @param by
+	 * @return
+	 * @throws InterruptedException
+	 */
 	public static boolean isElementVisible(WebDriver driver, final By by)
 			throws InterruptedException {
 		boolean value = false;
@@ -107,6 +136,10 @@ public class WebDriverWaitUtils {
 		return value;
 	}
 	
+	/**
+	 * @param driver
+	 * @param elm
+	 */
 	public static void waitElementIsVisible(WebDriver driver , WebElement elm){
 		WebDriverWait wait  = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOf(elm));
